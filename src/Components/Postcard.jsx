@@ -19,7 +19,7 @@ export default function PostCard({isProfilePage, post , commentlimit ,callback ,
   
   return <>
   
-    {isUpdating ? <CreatePost setIsUpdating={setIsUpdating} isUpdating={isUpdating} postbody={post.body} postimg={post.image} postid={post._id} callUserPost={callUserPost} callback={callback} /> : <>
+    {isUpdating ? <CreatePost isProfilePage={isProfilePage} setIsUpdating={setIsUpdating} isUpdating={isUpdating} postbody={post.body} postimg={post.image} postid={post._id} callUserPost={callUserPost} callback={callback} /> : <>
     
     
         <div className="bg-white  sm:w-170 rounded-md shadow-md h-auto py-3 px-3 my-5 mx-auto overflow-hidden">

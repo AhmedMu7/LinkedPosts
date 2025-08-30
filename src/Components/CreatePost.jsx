@@ -3,7 +3,7 @@ import { createPostApi, getUserPostsApi, updatePostsApi } from "../services/Post
 import { Button, Spinner } from "@heroui/react";
 import { warning } from "framer-motion";
 
-export default function CreatePost({setIsUpdating , isUpdating , postbody , postid , postimg , callback , callUserPost}) {
+export default function CreatePost({setIsUpdating , isUpdating , postbody , postid , postimg , callback , callUserPost ,isProfilePage}) {
   const [postBody, setPostBody] = useState(postbody? postbody : '');
   const [postImage, setPostImage] = useState(null);
   const [postImageUrl, setPostImageUrl] = useState(postimg? postimg : '');
@@ -49,7 +49,12 @@ export default function CreatePost({setIsUpdating , isUpdating , postbody , post
 
       response = await updatePostsApi(formdata,postid);
       if (response.message) {
-        await callUserPost();
+        if(isProfilePage){
+          await callUserPost()
+        }
+        else{
+          await callback()
+        }
         setPostBody('');
         setPostImageUrl('');
     }
