@@ -1,9 +1,9 @@
 import axios from "axios";
 
-export async function getPosts() {
+export async function getPosts(pageNum) {
   try {
     const { data } = await axios.get(
-      "https://linked-posts.routemisr.com/posts",
+      `https://linked-posts.routemisr.com/posts?page=${pageNum}`,
       {
         headers: {
           token: localStorage.getItem("token"),
